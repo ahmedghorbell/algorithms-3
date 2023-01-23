@@ -1,0 +1,74 @@
+//Solution with procedure 
+
+PROCEDURE dot_pruduct(v1,v2 : ARRAY_OF INTEGER, VAR dot : INTEGER)
+VAR
+    i : INTEGER ; 
+BEGIN
+    dot := 0 ; 
+    i := 0 ; 
+    IF (v1.length <> v2.length) THEN
+        Write("The vectors are with different sizes, dot_product can\'t be calculated")
+        dot := NaN ;
+    END_IF
+    WHILE (i < v1.length) DO
+        dot += v1[i]*v2[i] ;
+    END_WHILE
+END
+
+ALGORITHM Dot product
+VAR
+    v1,v2 : ARRAY_OF INTEGER[20];
+    dot : INTEGER ; 
+BEGIN
+    n1 := read_size();
+    n2 := read_size();
+    read_array(n1,v1);
+    read_array(n2,v2);
+    //call the procedure 
+    dot_product(v1,v2)
+    IF (dot == 0 ) THEN
+        Write("v1 and v2 are orthogonal")
+    ELSE
+        Write("v1 and v2 are not orthogonal")
+    END_IF
+END
+
+//Solution with function 
+
+FUNCTION dot_product(v1, v2 : ARRAY_OF INTEGER) : INTEGER
+VAR
+    i : INTEGER;
+    dot : INTEGER;
+BEGIN
+    i := 0;
+    dot := 0;
+    IF (v1.length <> v2.length) THEN
+        Write("The vectors are with different sizes, dot_product can\'t be calculated");
+        RETURN NaN;
+    END_IF
+    WHILE (i < v1.length) DO
+        dot := dot + v1[i]*v2[i];
+    END_WHILE
+    RETURN dot;
+END
+
+ALGORITHM Dot product
+VAR
+    v1,v2 : ARRAY_OF INTEGER[20];
+    dot : INTEGER ; 
+BEGIN
+    n1 := read_size();
+    n2 := read_size();
+    read_array(n1,v1);
+    read_array(n2,v2);
+    //call the function
+    dot := dot_product(v1,v2)
+    IF (dot == 0 ) THEN
+        Write("v1 and v2 are orthogonal")
+    ELSE
+        Write("v1 and v2 are not orthogonal")
+    END_IF
+    Write(dot);
+END
+
+
